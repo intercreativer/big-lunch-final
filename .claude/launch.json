@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "biglunch",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "4321", "--directory", "/Users/creative_x/Source/Personal/big-lunch-final"],
+      "port": 4321
+    }
+  ]
+}
