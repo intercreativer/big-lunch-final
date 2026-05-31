@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Биг Ланч</title>            <!-- TODO: per-page title -->
+
+  <link rel="icon" type="image/png" href="img/assets/logo_color.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<!--
+  ============================================================================
+  BASE PAGE TEMPLATE — the shared groundwork for every page.
+
+  To make a new page:
+    1. Copy this file (e.g. products.html) and set the <title>.
+    2. Add `is-active` to the nav item that matches the page (see below).
+    3. Put the page's objects INSIDE  <section class="frame"> … </section>.
+
+  Do NOT edit the header or the frame mechanics here — the teal frame shape,
+  fit-to-viewport (no scroll), green margins, and the mobile bottom space for
+  buttons are all defined ONCE in css/styles.css (.site-header, .hero, .frame)
+  and apply automatically. This template never needs adjusting.
+  ============================================================================
+-->
+<body>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="brand" href="index.html" aria-label="Биг Ланч — на главную">
+        <img class="brand__logo" src="img/assets/logo_color.png" alt="Биг Ланч" />
+      </a>
+
+      <nav class="main-nav" id="main-nav">
+        <a class="main-nav__link" href="#products">Продукты</a>
+        <a class="main-nav__link" href="#feedback">Обратная связь</a>
+        <!-- the flavor tab; add `is-active` on the quiz page: class="tab-flavor is-active …" -->
+        <a class="tab-flavor main-nav__cta" href="#quiz">Запустить наполнение вкусом</a>
+      </nav>
+
+      <img class="fill-meter" src="img/assets/empty_battery.png" alt="Наполнение вкусом" />
+
+      <button class="nav-toggle" type="button" aria-label="Открыть меню"
+              aria-controls="main-nav" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main class="hero">
+    <section class="frame" aria-label="">
+      <!-- ▼▼▼  PAGE CONTENT — place objects on top of the frame here  ▼▼▼ -->
+
+      <!-- ▲▲▲  PAGE CONTENT  ▲▲▲ -->
+    </section>
+  </main>
+
+  <script src="js/app.js" defer></script>
+</body>
+</html>
