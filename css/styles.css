@@ -79,6 +79,32 @@ a { color: inherit; text-decoration: none; }
 .btn--orange:hover { background: var(--orange-dark); }
 .btn--orange:active { transform: translateY(1px); }
 
+/* ----- "Запустить наполнение вкусом" tab (skewed trapezoid) -----
+   White fill by default; orange when its page is active. Live text
+   keeps Ramona + lets both states share one element. Shape matches
+   img/assets/game_tab.png. */
+.tab-flavor {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .02em;
+  font-size: 14px;
+  line-height: 1;
+  white-space: nowrap;
+  padding: 16px 34px;
+  color: var(--orange);
+  background: var(--white);
+  clip-path: polygon(0% 0%, 100% 0%, 95% 100%, 5% 100%);
+  transform: rotate(-1.1deg);
+  transition: background .15s ease, color .15s ease;
+}
+.tab-flavor.is-active { background: var(--orange); color: var(--white); }
+.tab-flavor:hover { filter: brightness(1.04); }
+
 /* ----- Header ----- */
 .site-header {
   position: sticky;
@@ -116,33 +142,13 @@ a { color: inherit; text-decoration: none; }
 }
 .main-nav__link:hover { opacity: 1; }
 
-/* ----- Fill / "battery" meter (flavor progress) ----- */
+/* ----- Fill "battery" meter (flavor gauge) -----
+   img/assets/empty_battery.png has a transparent interior, so the green
+   shows through. Later a fill bar can sit behind it to "fill with flavor". */
 .fill-meter {
   flex: 0 0 auto;
-  position: relative;
-  width: 62px;
-  height: 30px;
-  border: 3px solid var(--olive);
-  border-radius: 7px;
-}
-.fill-meter::after { /* nub on the right */
-  content: "";
-  position: absolute;
-  right: -8px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 5px;
-  height: 12px;
-  background: var(--olive);
-  border-radius: 0 3px 3px 0;
-}
-.fill-meter__level { /* JS sets width 0→100% as the quiz progresses */
-  position: absolute;
-  inset: 3px;
-  width: 0;
-  background: var(--olive);
-  border-radius: 3px;
-  transition: width .4s ease;
+  height: 52px; /* matches the tab's tilted top→bottom span */
+  width: auto;
 }
 
 /* ----- Hamburger (mobile only) ----- */
@@ -190,8 +196,8 @@ a { color: inherit; text-decoration: none; }
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 74px;
-    height: 32px;
+    height: 42px;
+    width: auto;
   }
 
   .main-nav {
@@ -217,9 +223,8 @@ a { color: inherit; text-decoration: none; }
     border-bottom: 1px solid rgba(255, 255, 255, .08);
   }
   .main-nav__cta {
-    margin-top: 12px;
-    width: 100%;
-    padding: 16px;
+    margin-top: 16px;
+    align-self: center;
   }
 
   /* hamburger → X when open */
