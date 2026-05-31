@@ -125,7 +125,7 @@ a { color: inherit; text-decoration: none; }
 }
 
 .brand { flex: 0 0 auto; line-height: 0; }
-.brand__logo { height: 54px; width: auto; }
+.brand__logo { height: 64px; width: auto; }
 
 .main-nav {
   margin-left: auto;
