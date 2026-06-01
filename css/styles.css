@@ -260,9 +260,23 @@ a { color: inherit; text-decoration: none; }
   z-index: 1;
   display: flex;
 }
-.hero-panel { flex: 1; min-width: 0; }
+.hero-panel { flex: 1; min-width: 0; position: relative; }
 .hero-panel--guy { background: var(--yellow); }  /* Rectangle 99 */
 .hero-panel--gal { background: var(--olive); }   /* Rectangle 100 */
+
+/* characters — centered, standing near the panel bottom (clipped to the panel shape) */
+.hero-panel__img {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  height: 84%;
+  width: auto;
+  pointer-events: none;
+}
+/* per-character size/placement is set per breakpoint (see media queries).
+   gal's box is a touch shorter than guy's because her SVG has less empty
+   space below the figure — that makes the actual people the same height. */
 
 /* ===== Mobile: fit the frame to the page, leave room for buttons below ===== */
 @media (max-width: 820px) {
@@ -289,6 +303,10 @@ a { color: inherit; text-decoration: none; }
      form the delimiter (Rect 100 → olive trapezoid, Rect 99 → yellow parallelogram) */
   .hero-panel--gal { clip-path: polygon(0% 0%, 100% 3.25%, 100% 96.98%, 0% 100%); }
   .hero-panel--guy { clip-path: polygon(0% 3.12%, 100% 0%, 100% 96.73%, 0% 100%); }
+
+  /* guy ok as-is; gal a bit smaller than guy + lifted to leave room for the "Выбери героя" tab */
+  .hero-panel--guy .hero-panel__img { height: 100%; bottom: -6%; }
+  .hero-panel--gal .hero-panel__img { height: 88%; bottom: 12%; }
 }
 
 /* ===== Desktop: fit the frame to the viewport (no scroll) ===== */
@@ -310,4 +328,8 @@ a { color: inherit; text-decoration: none; }
   /* hero panel shapes (Rectangle 99 / 100) — slants form the delimiter */
   .hero-panel--guy { clip-path: polygon(3.27% 0%, 100% 0%, 96.88% 100%, 0% 100%); }
   .hero-panel--gal { clip-path: polygon(3.02% 0%, 96.75% 0%, 100% 100%, 0% 100%); }
+
+  /* same figure height, raised to leave room for the name buttons */
+  .hero-panel--guy .hero-panel__img { height: 84%; bottom: 10%; }
+  .hero-panel--gal .hero-panel__img { height: 79%; bottom: 14%; }
 }
