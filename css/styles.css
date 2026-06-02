@@ -278,6 +278,13 @@ a { color: inherit; text-decoration: none; }
    gal's box is a touch shorter than guy's because her SVG has less empty
    space below the figure — that makes the actual people the same height. */
 
+/* ----- "Выбери героя" tab + Пётр/Оксана buttons (overlay the frame) ----- */
+.pick-hero { display: none; position: absolute; z-index: 3; width: auto; pointer-events: none; }
+.hero-btn  { display: none; position: absolute; z-index: 3; line-height: 0; }
+.hero-btn img { display: block; height: 100%; width: auto; }
+.hero-btn:hover { filter: brightness(1.05); }
+.hero-actions { display: none; }
+
 /* ===== Mobile: fit the frame to the page, leave room for buttons below ===== */
 @media (max-width: 820px) {
   .hero {
@@ -293,7 +300,6 @@ a { color: inherit; text-decoration: none; }
   .frame {
     flex: 1;
     padding: 16px;
-    margin-bottom: 96px;  /* reserved space for buttons added per page */
   }
 
   /* olive on top, yellow on bottom */
@@ -304,9 +310,27 @@ a { color: inherit; text-decoration: none; }
   .hero-panel--gal { clip-path: polygon(0% 0%, 100% 3.25%, 100% 96.98%, 0% 100%); }
   .hero-panel--guy { clip-path: polygon(0% 3.12%, 100% 0%, 100% 96.73%, 0% 100%); }
 
-  /* guy ok as-is; gal a bit smaller than guy + lifted to leave room for the "Выбери героя" tab */
+  /* guy ok as-is; gal lowered closer to the tab */
   .hero-panel--guy .hero-panel__img { height: 100%; bottom: -6%; }
-  .hero-panel--gal .hero-panel__img { height: 88%; bottom: 12%; }
+  .hero-panel--gal .hero-panel__img { height: 88%; bottom: 5%; }
+
+  /* "Выбери героя" tab — at the seam, under the gal */
+  .pick-hero--mobile {
+    display: block;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 44px;
+  }
+
+  /* both buttons (one image) in the bottom bar */
+  .hero-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 14px calc(14px + env(safe-area-inset-bottom));
+  }
+  .hero-actions img { width: 86%; max-width: 440px; height: auto; }
 }
 
 /* ===== Desktop: fit the frame to the viewport (no scroll) ===== */
@@ -329,7 +353,26 @@ a { color: inherit; text-decoration: none; }
   .hero-panel--guy { clip-path: polygon(3.27% 0%, 100% 0%, 96.88% 100%, 0% 100%); }
   .hero-panel--gal { clip-path: polygon(3.02% 0%, 96.75% 0%, 100% 100%, 0% 100%); }
 
-  /* same figure height, raised to leave room for the name buttons */
+  /* same figure height, raised to leave room for the name buttons (gal a bit higher) */
   .hero-panel--guy .hero-panel__img { height: 84%; bottom: 10%; }
-  .hero-panel--gal .hero-panel__img { height: 79%; bottom: 14%; }
+  .hero-panel--gal .hero-panel__img { height: 79%; bottom: 17%; }
+
+  /* "Выбери героя" tab — top-center, over the divider */
+  .pick-hero--desktop {
+    display: block;
+    top: 7%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 62px;
+  }
+  /* name button on each panel, right under the feet (figures sit slightly
+     left of panel-center, so the buttons are nudged to match) */
+  .hero-btn {
+    display: block;
+    transform: translateX(-50%);
+    height: 102px;     /* both same height → same visual size (Оксана is wider, longer word) */
+    bottom: 1.5%;
+  }
+  .hero-btn--petr   { left: 24%; }
+  .hero-btn--oksana { left: 73%; }
 }
